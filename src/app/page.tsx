@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
 import { Sidebar } from "@/components/sidebar";
 import Header from "@/components/header";
 import { Badge } from "@/components/ui/badge";
@@ -24,13 +23,13 @@ export default function SkillAssessmentDashboard() {
     setIsUpdateModalOpen(false);
   };
 
-  // Pie chart data for question analysis
+
   const questionAnalysisData = [
     { name: 'Correct', value: correctQuestions },
     { name: 'Incorrect', value: totalQuestions - correctQuestions }
   ];
 
-  const COLORS = ['#10B981', '#EF4444']; // Green for correct, Red for incorrect
+  const COLORS = ['#10B981', '#EF4444']; 
 
   return (
     <div className="flex flex-col h-screen bg-white">
@@ -45,44 +44,54 @@ export default function SkillAssessmentDashboard() {
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
               <div className="lg:col-span-8 space-y-6">
-                <Card className="overflow-hidden border-none shadow-lg">
-                  <CardContent className="p-6">
+                <Card className="relative overflow-hidden  shadow-xl border border-gray-200 rounded-lg">
+                  <CardContent className="p-6 space-y-4">
                     <div className="flex items-center justify-between">
-                      <div className="flex items-center space-x-4">
-                        <div className="rounded-lg">
+                      
+                      <div className="flex items-center space-x-6">
+                       
+                        <div className="">
                           <img
                             src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/240px-HTML5_logo_and_wordmark.svg.png"
                             width={50}
                             height={50}
                             alt="HTML5 Logo"
-                            className=""
+                            className="rounded-lg"
                           />
                         </div>
+
+         
                         <div>
-                          <h2 className="text-2xl font-bold text-gray-900">
+                          <h2 className="text-3xl font-extrabold text-gray-800 tracking-wide">
                             HTML Mastery
                           </h2>
-                          <p className="text-sm text-gray-500">
-                            8 Questions • 15 minutes • June 5, 2021
+                          <p className="text-md text-gray-600">
+                            <span className="font-medium">8 Questions</span> • 15 minutes • June 5, 2021
                           </p>
                         </div>
                       </div>
+
+                  
                       <Dialog open={isUpdateModalOpen} onOpenChange={setIsUpdateModalOpen}>
                         <DialogTrigger asChild>
                           <Button
-                            className="text-md bg-blue-500 hover:bg-blue-600 text-white font-semibold py-4 px-6 rounded-lg transition duration-300 ease-in-out transform hover:scale-105"
+                            className="text-lg bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-bold py-3 px-6 rounded-xl shadow-lg transition-transform duration-300 hover:scale-105"
                             onClick={() => setIsUpdateModalOpen(true)}
                           >
                             Update
                           </Button>
                         </DialogTrigger>
-                        <DialogContent>
+              
+                        <DialogContent className=" p-6 rounded-lg shadow-2xl ">
                           <DialogHeader>
-                            <DialogTitle>Update Test Results</DialogTitle>
+                            <DialogTitle className="text-2xl font-bold text-gray-800">
+                              Update Test Results
+                            </DialogTitle>
                           </DialogHeader>
-                          <div className="grid gap-4 py-4">
+                          <div className="grid gap-6 py-4">
+                       
                             <div className="grid grid-cols-4 items-center gap-4">
-                              <Label htmlFor="rank" className="text-right">
+                              <Label htmlFor="rank" className="text-right font-medium text-gray-700">
                                 Rank
                               </Label>
                               <Input
@@ -90,11 +99,12 @@ export default function SkillAssessmentDashboard() {
                                 type="number"
                                 value={rank}
                                 onChange={(e) => setRank(Number(e.target.value))}
-                                className="col-span-3"
+                                className="col-span-3 p-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-blue-500"
                               />
                             </div>
+                    
                             <div className="grid grid-cols-4 items-center gap-4">
-                              <Label htmlFor="percentile" className="text-right">
+                              <Label htmlFor="percentile" className="text-right font-medium text-gray-700">
                                 Percentile
                               </Label>
                               <Input
@@ -102,11 +112,12 @@ export default function SkillAssessmentDashboard() {
                                 type="number"
                                 value={percentile}
                                 onChange={(e) => setPercentile(Number(e.target.value))}
-                                className="col-span-3"
+                                className="col-span-3 p-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-blue-500"
                               />
                             </div>
+                     
                             <div className="grid grid-cols-4 items-center gap-4">
-                              <Label htmlFor="correctQuestions" className="text-right">
+                              <Label htmlFor="correctQuestions" className="text-right font-medium text-gray-700">
                                 Correct Questions
                               </Label>
                               <Input
@@ -114,14 +125,15 @@ export default function SkillAssessmentDashboard() {
                                 type="number"
                                 value={correctQuestions}
                                 onChange={(e) => setCorrectQuestions(Number(e.target.value))}
-                                className="col-span-3"
+                                className="col-span-3 p-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-blue-500"
                               />
                             </div>
                           </div>
+                    
                           <div className="flex justify-end">
                             <Button
                               type="submit"
-                              className="bg-green-500 hover:bg-green-600"
+                              className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-6 rounded-lg transition-transform hover:scale-105"
                               onClick={handleUpdateResults}
                             >
                               Save Changes
@@ -132,6 +144,7 @@ export default function SkillAssessmentDashboard() {
                     </div>
                   </CardContent>
                 </Card>
+
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   <Card className="border-none shadow-lg">
@@ -172,7 +185,7 @@ export default function SkillAssessmentDashboard() {
                   </Card>
                 </div>
 
-                {/* Rest of the previous code remains the same */}
+           
                 <Card className="border-none shadow-lg">
                   <CardHeader>
                     <CardTitle className="text-2xl font-bold text-gray-900">Performance Comparison</CardTitle>
