@@ -10,7 +10,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { ArrowUpRight, Trophy, Target, CheckCircle } from 'lucide-react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
-
+import GraphComp from '@/components/Graph'
 export default function SkillAssessmentDashboard() {
   const [rank, setRank] = useState(1);
   const [percentile, setPercentile] = useState(30);
@@ -186,19 +186,7 @@ export default function SkillAssessmentDashboard() {
                 </div>
 
            
-                <Card className="border-none shadow-lg">
-                  <CardHeader>
-                    <CardTitle className="text-2xl font-bold text-gray-900">Performance Comparison</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-gray-600 mb-4">
-                      Your score is in the {percentile}th percentile, which is below the average of 72% for all test takers.
-                    </p>
-                    <div className="h-64 bg-gray-100 rounded-lg flex items-center justify-center">
-                      <span className="text-gray-400">Performance Graph</span>
-                    </div>
-                  </CardContent>
-                </Card>
+               <GraphComp percentile={percentile}/>
               </div>
               <div className="lg:col-span-4 space-y-6">
                 <Card className="border-none shadow-xl rounded-lg overflow-hidden">
