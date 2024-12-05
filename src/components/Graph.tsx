@@ -11,7 +11,7 @@ import {
 import { Line } from "react-chartjs-2";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-// Register Chart.js components
+
 ChartJS.register(LineElement, PointElement, LinearScale, CategoryScale, Tooltip, Legend);
 
 interface PerformanceComparisonCardProps {
@@ -20,19 +20,19 @@ interface PerformanceComparisonCardProps {
 
 const PerformanceComparisonCard: React.FC<PerformanceComparisonCardProps> = ({ percentile }) => {
   const data = {
-    labels: ["0%", "25%", "50%", "75%", "100%"], // X-axis labels
+    labels: ["0%", "25%", "50%", "75%", "100%"], 
     datasets: [
       {
         label: "Number of Students",
-        data: [5, 10, 50, 25, 4], // Y-axis values
-        borderColor: "#6366F1", // Tailwind Indigo-500
+        data: [5, 10, 50, 25, 4], 
+        borderColor: "#6366F1", 
         backgroundColor: "rgba(99, 102, 241, 0.2)",
         pointBackgroundColor: "#6366F1",
         pointBorderColor: "#FFFFFF",
         pointHoverBackgroundColor: "#4F46E5",
         pointHoverBorderColor: "#FFFFFF",
         borderWidth: 2,
-        tension: 0.4, // Smooth curve
+        tension: 0.4, 
       },
     ],
   };
@@ -45,8 +45,8 @@ const PerformanceComparisonCard: React.FC<PerformanceComparisonCardProps> = ({ p
         backgroundColor: "#FFFFFF",
         borderColor: "#6366F1",
         borderWidth: 1,
-        titleColor: "#1F2937", // Tailwind Gray-800
-        bodyColor: "#4B5563", // Tailwind Gray-600
+        titleColor: "#1F2937", 
+        bodyColor: "#4B5563",
         cornerRadius: 8,
         displayColors: false,
       },
@@ -56,24 +56,24 @@ const PerformanceComparisonCard: React.FC<PerformanceComparisonCardProps> = ({ p
     },
     scales: {
       x: {
-        type: "category",
+        type: "category" as const, 
         grid: {
-          color: "#E5E7EB", // Tailwind Gray-200
+          color: "#E5E7EB", 
         },
         ticks: {
-          color: "#6B7280", // Tailwind Gray-500
+          color: "#6B7280", 
           font: {
             size: 14,
           },
         },
       },
       y: {
-        type: "linear",
+        type: "linear" as const,
         grid: {
-          color: "#E5E7EB", // Tailwind Gray-200
+          color: "#E5E7EB", 
         },
         ticks: {
-          color: "#6B7280", // Tailwind Gray-500
+          color: "#6B7280", 
           font: {
             size: 14,
           },
@@ -81,6 +81,7 @@ const PerformanceComparisonCard: React.FC<PerformanceComparisonCardProps> = ({ p
       },
     },
   };
+  
 
   return (
     <Card className="border-none shadow-lg rounded-lg overflow-hidden bg-gradient-to-r from-indigo-50 to-indigo-100">
@@ -95,7 +96,8 @@ const PerformanceComparisonCard: React.FC<PerformanceComparisonCardProps> = ({ p
           which is below the average of <span className="font-bold text-indigo-600">72%</span> for all test takers.
         </p>
         <div className="h-48 sm:h-72 bg-white shadow-md rounded-lg p-2 sm:p-4">
-          <Line data={data} options={options} />
+        <Line data={data} options={options} />
+
         </div>
       </CardContent>
     </Card>
