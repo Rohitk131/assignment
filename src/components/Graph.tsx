@@ -84,17 +84,17 @@ const PerformanceComparisonCard: React.FC<PerformanceComparisonCardProps> = ({ p
 
   return (
     <Card className="border-none shadow-lg rounded-lg overflow-hidden bg-gradient-to-r from-indigo-50 to-indigo-100">
-      <CardHeader className="p-6 bg-gradient-to-r from-indigo-500 to-indigo-600 text-white">
-        <CardTitle className="text-3xl font-semibold">
+      <CardHeader className="p-4 sm:p-6 bg-gradient-to-r from-indigo-500 to-indigo-600 text-white">
+        <CardTitle className="text-xl sm:text-3xl font-semibold">
           Performance Comparison
         </CardTitle>
       </CardHeader>
-      <CardContent className="p-6">
-        <p className="text-lg text-gray-800 mb-6">
+      <CardContent className="p-4 sm:p-6">
+        <p className="text-sm sm:text-lg text-gray-800 mb-4 sm:mb-6">
           You scored in the <span className="font-bold text-indigo-600">{percentile}th percentile</span>,
           which is below the average of <span className="font-bold text-indigo-600">72%</span> for all test takers.
         </p>
-        <div className="h-72 bg-white shadow-md rounded-lg p-4">
+        <div className="h-48 sm:h-72 bg-white shadow-md rounded-lg p-2 sm:p-4">
           <Line data={data} options={options} />
         </div>
       </CardContent>
